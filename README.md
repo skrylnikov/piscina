@@ -438,7 +438,8 @@ itself.
 
 ### Event: `'drain'`
 
-A `'drain'` event is emitted whenever the `queueSize` reaches `0`.
+A `'drain'` event is emitted whenever the `queueSize` is below the
+total capacity of the pool.
 
 ### Event: `'message'`
 
