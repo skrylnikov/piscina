@@ -98,7 +98,8 @@ test('postTask() validates abortSignal', async ({ rejects }) => {
 
 test('Piscina emits drain', async ({ ok }) => {
   const pool = new Piscina({
-    filename: resolve(__dirname, 'fixtures/eval.js')
+    filename: resolve(__dirname, 'fixtures/eval.js'),
+    maxThreads: 1
   });
 
   let drained = false;
@@ -106,7 +107,7 @@ test('Piscina emits drain', async ({ ok }) => {
     drained = true;
   });
 
-  await Promise.all([pool.runTask('123'), pool.runTask('123')]);
+  await Promise.all([pool.runTask('123'), pool.runTask('123'), pool.runTask('123')]);
 
   ok(drained);
 });
